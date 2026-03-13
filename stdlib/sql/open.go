@@ -40,6 +40,8 @@ func getOpenFunc(driverName, dataSourceName string) openFunc {
 	switch driverName {
 	case "mssql", "sqlserver":
 		return mssqlOpenFunction(driverName, dataSourceName)
+	case "mysql":
+		return mysqlOpenFunction(dataSourceName)
 	case "postgres":
 		return postgresOpenFunction(dataSourceName)
 	default:
