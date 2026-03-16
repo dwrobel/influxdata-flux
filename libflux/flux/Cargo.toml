@@ -5,6 +5,20 @@ rust-version = "1.83"
 authors = ["Flux Team <flux-developers@influxdata.com>"]
 edition = "2021"
 
+[package.metadata.capi.header]
+subdirectory = "influxdata"
+generation = false
+enabled = true
+
+[package.metadata.capi.pkg_config]
+description = "Library for the InfluxData Flux engine"
+
+[package.metadata.capi.library]
+versioning = true
+
+[package.metadata.capi.install.include]
+asset = [{from="../include/influxdata/flux.h"}]
+
 [lib]
 name = "flux"
 crate-type = ["rlib", "staticlib", "cdylib"]
@@ -13,6 +27,7 @@ crate-type = ["rlib", "staticlib", "cdylib"]
 default = ["strict", "cffi"]
 strict = ["flux-core/strict"]
 cffi = ["serde", "serde_json"]
+capi = []
 lsp = ["flux-core/lsp"]
 label-polymorphism = []
 
